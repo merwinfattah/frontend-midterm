@@ -29,7 +29,7 @@ const VideoDetail = () => {
         timestamp: Date.now(),
         video_id: id,
     });
-
+    console.log('berubah ga ya', comment.video_id)
     async function handleUsernameInput(e) {
         setComment({
             ...comment,
