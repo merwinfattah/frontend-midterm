@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Flex, Box, Text, List, ListItem, UnorderedList, AspectRatio, FormControl, FormLabel, Input, Textarea, Button, Link as ChakraLink, defineStyle, defineStyleConfig} from '@chakra-ui/react';
-import { useLocation, useNavigate, Link as ReactRouterLink } from 'react-router-dom';
+import { useLocation, Link as ReactRouterLink } from 'react-router-dom';
 import VideoDataService from "../api/services/video.service";
 import ProductDataService from "../api/services/product.service";
 import CommentDataService from '../api/services/comment.service';
@@ -16,9 +16,8 @@ export const styles = defineStyleConfig({
 
 const VideoDetail = () => {
     const location = useLocation(); // Get the location object
-    const navigate = useNavigate();
     const pathnameParts = location.pathname.split('/'); // Split the pathname into parts
-    const id = pathnameParts[pathnameParts.length - 1]; // Get the last part as the id
+    const [id, setId] = useState(pathnameParts[pathnameParts.length - 1]); // Get the last part as the id
     const [videos, setVideos] = useState([]);
     const [products, setProducts] = useState([]);
     const [comments, setComments] = useState([]);
@@ -120,7 +119,7 @@ const VideoDetail = () => {
                                     title={product.title}
                                     thumbnail={videos.find((video) => video._id === product.video_id)?.thumbnail}
                                     price={product.price}
-                                    onClick={() => navigate(`/video-detail/${product.video_id}`)}
+                                    onClick={() => setId(product.video_id)}
                                 />
                             </ListItem>
                         ))}
