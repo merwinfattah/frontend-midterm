@@ -27,7 +27,7 @@ const VideoDetail = () => {
         username: '',
         comment: '',
         timestamp: Date.now(),
-        video_id: id,
+        video_id: '',
     });
     console.log('berubah ga ya', comment.video_id)
     async function handleUsernameInput(e) {
@@ -100,6 +100,10 @@ const VideoDetail = () => {
             retrieveVideos();
             retrieveProducts();
             retrieveComments(id);
+            setComment({
+                ...comment,
+                video_id: id,
+            });
         } catch (error) {
             console.error(error);
         }
