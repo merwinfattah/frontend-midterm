@@ -19,6 +19,7 @@ const VideoDetail = () => {
     const navigate = useNavigate();
     const pathnameParts = location.pathname.split('/'); // Split the pathname into parts
     const id = pathnameParts[pathnameParts.length - 1]; // Get the last part as the id
+    console.log(id);
     const [videos, setVideos] = useState([]);
     const [products, setProducts] = useState([]);
     const [comments, setComments] = useState([]);
