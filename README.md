@@ -1,8 +1,10 @@
-# React + Vite
+# Tokopedia Clone Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Situs untuk menampilkan video promosi barang dan review terhadap barang tersebut. Tokopedia Clone memiliki beberapa fitur diantaranya:
+- Fitur Menampilkan Thumbnail Video Barang
+- Fitur Daftar Barang
+- Fitur Daftar Komentar
+- Fitur Tambah Komentar
+- Fitur Lihat Video Barang
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
