@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Box, Text, List, ListItem, UnorderedList, AspectRatio, FormControl, FormLabel, Input, Textarea, Button, Link as ChakraLink, defineStyle, defineStyleConfig} from '@chakra-ui/react';
+import { Flex, Box, Text, List, ListItem, UnorderedList, AspectRatio, FormControl, FormLabel, Input, Textarea, Button, Link as ChakraLink} from '@chakra-ui/react';
 import { useLocation, useNavigate, Link as ReactRouterLink } from 'react-router-dom';
 import VideoDataService from "../api/services/video.service";
 import ProductDataService from "../api/services/product.service";
 import CommentDataService from '../api/services/comment.service';
 import ProductCard from './ProductCard';
 
-const white = defineStyle({
-    color: '#ffffff',
-})
-
-export const styles = defineStyleConfig({
-    color: {white},
-})
-
 const VideoDetail = () => {
     const location = useLocation(); // Get the location object
     const navigate = useNavigate();
     const pathnameParts = location.pathname.split('/'); // Split the pathname into parts
     const id = pathnameParts[pathnameParts.length - 1]; // Get the last part as the id
-    console.log(id);
     const [videos, setVideos] = useState([]);
     const [products, setProducts] = useState([]);
     const [comments, setComments] = useState([]);
@@ -29,7 +20,7 @@ const VideoDetail = () => {
         timestamp: Date.now(),
         video_id: '',
     });
-    console.log('berubah ga ya', comment.video_id)
+ 
     async function handleUsernameInput(e) {
         setComment({
             ...comment,
@@ -112,7 +103,7 @@ const VideoDetail = () => {
     return (
         <React.Fragment>
             <Box>
-                <ChakraLink as={ReactRouterLink} to='/' color={styles}>Back to Home</ChakraLink>
+                <ChakraLink as={ReactRouterLink} to='/' >Back to Home</ChakraLink>
                 <h1 className={`text-[#04e413] mb-10`}>Product Video</h1>
             </Box>
             <Flex gap={6}>
