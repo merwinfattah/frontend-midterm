@@ -17,8 +17,7 @@ export const styles = defineStyleConfig({
 const VideoDetail = () => {
     const location = useLocation(); // Get the location object
     const navigate = useNavigate();
-    const pathnameParts = location.pathname.split('/'); // Split the pathname into parts
-    const id = pathnameParts[pathnameParts.length - 1]; // Get the last part as the id
+    const [id, setId] = useState(null); // Initialize with null
     const [videos, setVideos] = useState([]);
     const [products, setProducts] = useState([]);
     const [comments, setComments] = useState([]);
@@ -98,11 +97,20 @@ const VideoDetail = () => {
         try {
             retrieveVideos();
             retrieveProducts();
-            retrieveComments(id);
         } catch (error) {
             console.error(error);
         }
-    }, [id]);
+    }, []);
+
+    useEffect(() => {
+        const pathnameParts = location.pathname.split('/');
+        const newId = pathnameParts[pathnameParts.length - 1];
+        setId(newId); // Update id when the route changes
+
+        if (newId) {
+            retrieveComments(newId); // Retrieve comments for the new id
+        }
+    }, [location]);
 
     return (
         <React.Fragment>
